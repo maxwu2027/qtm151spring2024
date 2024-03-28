@@ -75,8 +75,11 @@ Hints:
 - In SQL you only need a single equality "="
 - In SQL use single quotes for logical conditions with strings '...'
 -- SQLBook: Code
--- Active: 1710903290079@@127.0.0.1@5432@postgres@public
+-- Active: 1710939126992@@127.0.0.1@5432@postgres
 -- Write your own code
+SELECT * FROM homework_data
+WHERE nationality = 'British'
+ORDER BY driver_name ASC;
 
 
 
@@ -95,8 +98,12 @@ alies, e.g. ``` ... AS ... ```
 
 
 -- SQLBook: Code
--- Active: 1710903290079@@127.0.0.1@5432@postgres@public
+-- Active: 1710939126992@@127.0.0.1@5432@postgres
 -- Write your own code
+SELECT
+  (SELECT COUNT(DISTINCT nationality) FROM homework_data) AS unique_nationalities,
+  COUNT(*) AS total_rows
+FROM homework_data;
 
 
 
@@ -114,8 +121,12 @@ alies, e.g. ``` ... AS ... ```
 HINT: See the end of lectures 16 for details <br>
 
 -- SQLBook: Code
--- Active: 1710903290079@@127.0.0.1@5432@postgres@public
+-- Active: 1710939126992@@127.0.0.1@5432@postgres
 -- Write your own code
+SELECT driver_id, AVG(lap_times) AS average_lap_time
+FROM homework_data
+GROUP BY driver_id
+ORDER BY average_lap_time ASC;
 
 
 
@@ -136,8 +147,13 @@ HINT: Use ```HAVING SUM(lap_times)``` rather than an alias <br>
 for the code to work correctly.
 
 -- SQLBook: Code
+-- Active: 1710939126992@@127.0.0.1@5432@postgres
 
 # Write your own code
+SELECT nationality, SUM(lap_times) AS total_lap_time
+FROM homework_data
+GROUP BY nationality
+HAVING SUM(lap_times) > 150;
 
 
 
@@ -163,7 +179,22 @@ HINT: See the lecture 16 for details <br>
 HINT: To insert a string value, use 'single quotations'
 
 -- SQLBook: Code
+-- Active: 1710939126992@@127.0.0.1@5432@postgres
 -- Write your own code
+-- Drop the table if it exists
+DROP TABLE IF EXISTS lap_times;
+
+CREATE TABLE lap_times (
+  "raceId" int,
+  "driverId" int,
+  "lap" int,
+  "position" int,
+  "time" varchar(255),
+  "milliseconds" int
+);
+
+INSERT INTO lap_times ("raceId", "driverId", "lap", "position", "time", "milliseconds")
+VALUES (1, 22, 5, 1, '1:21.345', 81345);
 
 
 
