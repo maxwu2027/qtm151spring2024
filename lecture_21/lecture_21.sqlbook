@@ -15,6 +15,7 @@ called "SQL queries"
 
 Basic Syntax
 -- SQLBook: Code
+-- Active: 1710939126992@@127.0.0.1@5432@postgres
 -- Commands separated by a semicolon ";"
 -- Commands in upper case, inputs lower case
 -- Include comments with two dashes "--"
