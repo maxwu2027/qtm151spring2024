@@ -14928,7 +14928,7 @@ Hint: Remember to include the legend names as a list <code>[...]</code></p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.legend.Legend at 0x185e62b6f50&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x263ae248410&gt;</pre>
 </div>
 
 </div>
@@ -15064,7 +15064,7 @@ by month which computes the standard deviation of "usd_to_rmb"</li>
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Write your own code</span>
 <span class="n">month_config</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">'date'</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">'m'</span><span class="p">)</span>
-<span class="n">exchangerates</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">month_config</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">sp500_std</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"usd_to_rmb"</span><span class="p">,</span><span class="s2">"std"</span><span class="p">))</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">exchangerates</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">month_config</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">month_std</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"usd_to_rmb"</span><span class="p">,</span><span class="s2">"std"</span><span class="p">))</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15106,7 +15106,7 @@ by month which computes the standard deviation of "usd_to_rmb"</li>
     <tr style="text-align: right;">
       <th></th>
       <th>date</th>
-      <th>sp500_std</th>
+      <th>month_std</th>
     </tr>
   </thead>
   <tbody>
